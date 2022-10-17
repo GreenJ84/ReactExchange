@@ -4,6 +4,8 @@ import express from "express";
 import { graphqlHTTP } from "express-graphql";
 import cors from "cors";
 import { DataSource } from "typeorm"
+import { Users } from "./src/Entities/User";
+import { ReactExchangeSchema } from "./src/Schemas";
 
 const main = async () => {
 
@@ -16,13 +18,13 @@ const main = async () => {
         password: 'rootroot',
         database: 'ReactExchange',
         logging: true,
-        synchronize: true,
-        entities: []
+        synchronize: false,
+        entities: [ Users ]
     });
 
     AppDataSource.initialize()
         .then(() => console.log('Looks Like I did the databse thing right this time'))
-        .catch( err => console.log(` I think it might have broke because: ${err}`));
+        .catch( (err: any):any => console.log(` I think it might have broke because: ${err}`));
 
 
     const app = express();
@@ -31,7 +33,10 @@ const main = async () => {
     app.use(cors());
     //* app.use(cookieParser())
     app.use(express.json(), express.urlencoded({ extended: true }));
-    //* app.use("/graphql", graphqlHTTP({}));
+    app.use("/graphql", graphqlHTTP({
+        schema: ReactExchangeSchema,
+        graphiql: true
+    }));
 
     app.listen(port, () => {
         console.log(`Crypto Moonshot is happening thanks to Starlord ${ port }`)
