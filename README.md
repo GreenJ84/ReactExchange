@@ -13,9 +13,9 @@ A Full-Stack TypeScript Application bolstering a React Front-End, Express-GraphQ
 
 # How to install locally
 
-**1.** A MySQL database is reuired for this project. Please dowload [Here]() if you need it.
+**1.** A MySQL database is reuired for this project. Please dowload [Here](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) if you need it.
 
-**2.** Follow the ths [contribution]() steps for getting the repository set up.
+**2.** Follow the ths [contribution](https://github.com/GreenJ84/ReactExchange/blob/main/project_contributions.md.md#profile-contributions-guidline) steps for getting the repository set up.
 
 **3.** Once the project is cloned, ``` cd ReactExchange ``` into the project directory.
 
