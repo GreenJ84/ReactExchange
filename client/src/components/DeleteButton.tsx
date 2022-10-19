@@ -7,12 +7,13 @@ interface deleteInterface{
 }
 
 const DeleteButton = (props: deleteInterface ) => {
-    const userId = props.userId
+    const { userId } = props;
 
     const [ deleteUser, { error }] = useMutation(DELETE_USER);
+    if (error){ console.log(error.message) }
 
     return (
-    <button onClick={() => {console.log(userId); deleteUser({ variables: {id: userId }}); }}>Delete</button>
+    <button onClick={() => { deleteUser({ variables: {id: userId }}); window.location.reload()}}>Delete</button>
     )
 }
 
