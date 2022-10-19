@@ -52,9 +52,9 @@ function UserList(props: UserInterface) {
         <tbody>
             {data.getAllUsers.map((user: User): any => {
             return <tr key={user.username}>
-                <td> <div style={ linkStyle } onClick={() => callback()}>{ user.firstName }</div></td>
+                <td>{ user.firstName }</td>
                 <td>{ user.lastName }</td>
-                <td>{ user.username }</td>
+                <td><div style={ linkStyle } onClick={() => callback()}>{ user.username }</div></td>
                 <td>{ user.email }</td>
                 <td><DeleteButton userId={ user.id }/></td>
             </tr>
