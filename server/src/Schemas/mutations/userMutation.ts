@@ -26,16 +26,17 @@ export const CREATE_USER = {
     }
 };
 
+
 export const UPDATE_USER_PASSWORD = {
     type: UserType,
     args:{
-        username: { type: GraphQLID },
+        username: { type: GraphQLString },
         oldPassword: { type: GraphQLString },
         newPassword: { type: GraphQLString }
     },
     async resolve(parent: any, args: any){
         const { username, oldPassword, newPassword } = args;
-        let thisUser = await Users.findOne({where:{ username: username }});
+        let thisUser = await Users.findOne({where: { username: username }});
         if (!thisUser){
             throw new Error("No User found with username provided");
         }
@@ -56,8 +57,7 @@ export const DELETE_USER = {
         id: { type: GraphQLID }
     },
     async resolve(parent: any, args: any){
-        const id = args.id;
-        await Users.delete(id);
+        await Users.delete({ id: args.id });
         return { successfull: true, message: `Deleted id: ${args.id}`};
     }
 };
