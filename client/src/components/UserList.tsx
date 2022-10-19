@@ -36,32 +36,32 @@ function UserList(props: UserInterface) {
     
     
     return (<>
-    { data && <>
-    <h1 style={{backgroundColor: 'lightblue', width: '40%', margin: '5% 30% 0', textAlign: 'center', fontSize: '5vw', borderRadius: '10px', boxShadow: '3px 2px blue'}}> Create your own User!</h1>
-
-    <table style={ tableStyle }>
-        <thead>
-            <tr>
-                <th style={ cellStyle }>First Name</th>
-                <th style={ cellStyle }>Last Name</th>
-                <th style={ cellStyle }>Username</th>
-                <th style={ cellStyle }>Email</th>
-                <th style={ cellStyle }>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {data.getAllUsers.map((user: User): any => {
-            return <tr key={user.username}>
-                <td>{ user.firstName }</td>
-                <td>{ user.lastName }</td>
-                <td><div style={ linkStyle } onClick={() => callback()}>{ user.username }</div></td>
-                <td>{ user.email }</td>
-                <td><DeleteButton userId={ user.id }/></td>
-            </tr>
-            
-            })}
-        </tbody>
-    </table> </>}
-    </>)}
+    
+        <h1 style={{backgroundColor: 'lightblue', width: '40%', margin: '5% 30% 0', textAlign: 'center', fontSize: '5vw', borderRadius: '10px', boxShadow: '3px 2px blue'}}> Create your own User!</h1>
+        <table style={ tableStyle }>
+            <thead>
+                <tr>
+                    <th style={ cellStyle }>First Name</th>
+                    <th style={ cellStyle }>Last Name</th>
+                    <th style={ cellStyle }>Username</th>
+                    <th style={ cellStyle }>Email</th>
+                    <th style={ cellStyle }>Actions</th>
+                </tr>
+            </thead>
+            { data && <>
+            <tbody>
+                {data.getAllUsers.map((user: User): any => {
+                return <tr key={user.username}>
+                    <td>{ user.firstName }</td>
+                    <td>{ user.lastName }</td>
+                    <td><div style={ linkStyle } onClick={() => callback()}>{ user.username }</div></td>
+                    <td>{ user.email }</td>
+                    <td><DeleteButton userId={ user.id }/></td>
+                </tr>
+                
+                })}
+            </tbody></>}
+        </table> 
+        </>)}
 
 export default UserList;
