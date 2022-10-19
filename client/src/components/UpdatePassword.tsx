@@ -19,7 +19,8 @@ const UpdatePassword = () => {
     const [ oldPassword, setOldPassword ] = useState("");
     const [ newPassword, setNewPassword ] = useState("");
 
-    const [ updatePassword, { error, data }] = useMutation(UPDATE_USER_PASSWORD)
+    const [ updatePassword, { error }] = useMutation(UPDATE_USER_PASSWORD)
+    if (error){ console.log(error) }
 
     const submit = () => {
         let blank: string = "";
@@ -50,7 +51,10 @@ const UpdatePassword = () => {
         <input type="text" placeholder="New Password" value={ newPassword } onChange={(e) => setNewPassword(e.target.value)} />
         </p>
 
-        <button onClick={() => submit()}>Create User</button>
+        <div style={{display: 'flex', justifyContent: 'space-between', columnGap: '5%' }}>
+        <button onClick={() => window.location.reload() }>Cancel</button>
+        <button onClick={() => submit()}>Update</button>
+        </div>
 
     </div>
     )
