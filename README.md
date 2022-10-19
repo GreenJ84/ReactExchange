@@ -1,4 +1,4 @@
-# React Crypto Exchange
+# ReactQL
 
 - Technologies Implemented:
     - React.js
