@@ -58,6 +58,6 @@ export const DELETE_USER = {
     async resolve(parent: any, args: any){
         const id = args.id;
         await Users.delete(id);
-        return args;
+        return { successfull: true, message: `Deleted id: ${args.id}`};
     }
 };
