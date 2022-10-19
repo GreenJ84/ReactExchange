@@ -21,11 +21,18 @@ const tableStyle = {
 const cellStyle = {
     borderBottom: '1px solid black'
 }
+const linkStyle ={
+    color: 'blue'
+}
 
-function UserList() {
+interface UserInterface{
+    callback: Function
+}
+
+function UserList(props: UserInterface) {
+    const callback = props.callback
 
     const { data } = useQuery(GET_ALL_USERS)
-    console.log(data);
     
     
     return (<>
@@ -45,7 +52,7 @@ function UserList() {
         <tbody>
             {data.getAllUsers.map((user: User): any => {
             return <tr key={user.username}>
-                <td>{ user.firstName }</td>
+                <td> <div style={ linkStyle } onClick={() => callback()}>{ user.firstName }</div></td>
                 <td>{ user.lastName }</td>
                 <td>{ user.username }</td>
                 <td>{ user.email }</td>
