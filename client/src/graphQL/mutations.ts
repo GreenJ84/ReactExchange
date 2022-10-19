@@ -42,8 +42,8 @@ export const UPDATE_USER_PASSWORD = gql`
 
 export const DELETE_USER = gql`
     mutation deleteUser($id: ID!){
-            deleteUser(id: $id){
-                    message
-                }
+        deleteUser(id: $id){
+            id
+        }
     }
 `
