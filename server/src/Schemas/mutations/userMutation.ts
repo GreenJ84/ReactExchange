@@ -49,7 +49,7 @@ export const UPDATE_USER_PASSWORD = {
         thisUser = await Users.findOne({where:{ username: username }});
         return thisUser;
     }
-}
+};
 
 export const DELETE_USER = {
     type: UserType,
@@ -61,3 +61,23 @@ export const DELETE_USER = {
         return { successfull: true, message: `Deleted id: ${args.id}`};
     }
 };
+
+export const UPDATE_USER_DETAILS = {
+    type: UserType,
+    args:{
+        firstName: { type: GraphQLString},
+        lastName: { type: GraphQLString},
+        username: { type: GraphQLString},
+        email: { type: GraphQLString}
+    },
+    async resolve(parent: any, args: any){
+        const { firstName, lastName, username, email, password } = args;
+        let thisUser = await Users.findOne({where: { username: username }});
+        if (!thisUser){
+            throw new Error("No User found with username provided");
+        }
+        await Users.update({username: username}, {firstName: firstName}, {lastName: lastName}, {email: email});
+        thisUser = await Users.findOne({where:{ username: username }});
+        return thisUser;
+    } 
+}

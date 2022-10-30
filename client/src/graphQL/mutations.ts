@@ -47,3 +47,25 @@ export const DELETE_USER = gql`
         }
     }
 `
+
+export const UPDATE_USER_DETAILS = gql`
+    mutation updateUserDetails(
+        $firstName: String!
+        $lastName: String!
+        $username: String!
+        $email: String!
+    ) {
+        updateUserDetails(
+            firstName: $firstName
+            lastName: $lastName
+            username: $username
+            email: $email
+        ){
+            id
+            firstName
+            lastName
+            username
+            email
+        }
+    }
+`
