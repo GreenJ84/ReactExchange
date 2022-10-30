@@ -27,11 +27,11 @@ const UpdateUserDetails = () => {
         let blank: string = "";
         updateUserDetails({
             variables: {
-				firstName: firstName,
-				lastName: lastName,
-				username: username,
-				email: email
-			  }
+		firstName: firstName,
+		lastName: lastName,
+		username: username,
+		email: email
+		}
         });
         setFirstName(blank);
     	setLastName(blank);
@@ -58,7 +58,7 @@ const UpdateUserDetails = () => {
         <input type="text" placeholder="email" value={ email } onChange={(e) => setEmail(e.target.value)} />
         </p>
 
-        <button onClick={() => submit()}>Create User</button>
+        <button onClick={() => submit()}>Update User</button>
 
     </div>)
     )
